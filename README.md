@@ -16,7 +16,7 @@ Este método é responsável por decriptar o dado. Recebe o dado encriptado, a c
 Uma vez que um dado é encriptado, a função encript disponibiliza Crypta::$secretKeyIndex - chave utilizada em self::$secretKey. Assim, esse dado pode transitar entre as pontas sem revelar a real chave de encriptação. O timestamp utilizado na encriptação também deve transitar entre as pontas, mas esse dado não é tão perigoso.
 
 # Uso
-<?php
+
  require 'vendor/autoload.php';
  use vendor\Crypta;
  Crypta::encrypt("Olá. Eu serei encriptado agora");
