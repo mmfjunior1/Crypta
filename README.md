@@ -1,2 +1,2 @@
 # Crypta
-Pacote para encriptação e decriptação de dados
+Classe para encriptação e decriptação de dados
