@@ -5,8 +5,31 @@ namespace vendor;
 class Crypta {
 
 	public static $encryptMethod	= 'AES-256-CBC';
-	private static $secretKey		= array('ChaveSecreta');
-	private static $secretIV				= 'IVASUAESCOLHA';
+	private static $secretKey		= array('ChaveSecreta',
+											'BASTARDOSINGLORIOS',
+											'4785699!@#$$$!',
+											'BancosDoMundo',
+											'Palmatoria',
+											'a vingança nunca é plena. Mata a alma e envenena',
+											'banana',
+											'pluralidade das coisas',
+											'internet das coisas',
+											'frases sem sentido',
+											'busca',
+											'tangodown',
+											'blitz',
+											'secretachave',
+											'paisdetodos',
+											'brasil',
+											'37727669',
+											'160604102017',
+											'AtaqueDDOS',
+											'SQLInjection',
+											'Anjos e demonios');
+	private static $secretIV				= 'EsteDeveSerOIV';
+	public static $criptedData				= "";
+	public static $timeStampHash			= 0;
+	public static $secretKeyIndex			= 0;
 	public static  function decrypt($string,$key,$time)
 	{
 		$output				= false;
@@ -31,6 +54,9 @@ class Crypta {
 		$key				= hash('md5', md5($secret_key.$time));
 		$output				= openssl_encrypt($string, $method, $key, 0, $iv);
 		$output				= base64_encode($output);
+		self::$criptedData = $output;
+		self::$timeStampHash = $time;
+		self::$secretKeyIndex = $rand;
 		return array($output,$rand,$time);
 	}
 }
